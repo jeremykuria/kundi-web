@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "kundi-web"
+    }
+  },
+  "defaultProject": "kundi-web",
+  "cli": {
+    "analytics": false
+  }
 }
