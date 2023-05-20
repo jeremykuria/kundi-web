@@ -1,0 +1,165 @@
+<div>
+  <h2 id="page-heading" data-cy="AssociationHeading">
+    <span jhiTranslate="portalApp.association.home.title">Associations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="portalApp.association.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-association"
+        [routerLink]="['/association/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="portalApp.association.home.createLabel"> Create a new Association </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="associations?.length === 0">
+    <span jhiTranslate="portalApp.association.home.notFound">No Associations found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="associations && associations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="brief">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.brief">Brief</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phoneNumber">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentStatus">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.contentStatus">Content Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="paybill">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.paybill">Paybill</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="associationType">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.associationType">Association Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="configs">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.configs">Configs</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdOn">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.createdOn">Created On</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastUpdatedOn">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.lastUpdatedOn">Last Updated On</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastUpdatedBy">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.association.lastUpdatedBy">Last Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let association of associations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/association', association.id, 'view']">{{ association.id }}</a>
+          </td>
+          <td>{{ association.name }}</td>
+          <td>{{ association.brief }}</td>
+          <td>{{ association.description }}</td>
+          <td>{{ association.phoneNumber }}</td>
+          <td>{{ association.contentStatus }}</td>
+          <td>{{ association.paybill }}</td>
+          <td jhiTranslate="{{ 'portalApp.AssociationType.' + association.associationType }}">{{ association.associationType }}</td>
+          <td>{{ association.configs }}</td>
+          <td>{{ association.createdBy }}</td>
+          <td>{{ association.createdOn }}</td>
+          <td>{{ association.lastUpdatedOn }}</td>
+          <td>{{ association.lastUpdatedBy }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/association', association.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/association', association.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(association)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

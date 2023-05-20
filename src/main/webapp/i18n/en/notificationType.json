@@ -1,0 +1,9 @@
+{
+  "portalApp": {
+    "NotificationType": {
+      "null": "",
+      "EMAIL": "EMAIL",
+      "SMS": "SMS"
+    }
+  }
+}

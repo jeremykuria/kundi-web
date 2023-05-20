@@ -1,0 +1,36 @@
+{
+  "portalApp": {
+    "association": {
+      "home": {
+        "title": "Associations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Association",
+        "createOrEditLabel": "Create or edit a Association",
+        "notFound": "No Associations found"
+      },
+      "created": "A new Association is created with identifier {{ param }}",
+      "updated": "A Association is updated with identifier {{ param }}",
+      "deleted": "A Association is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Association {{ id }}?"
+      },
+      "detail": {
+        "title": "Association"
+      },
+      "id": "ID",
+      "name": "Name",
+      "brief": "Brief",
+      "description": "Description",
+      "phoneNumber": "Phone Number",
+      "contentStatus": "Content Status",
+      "paybill": "Paybill",
+      "associationType": "Association Type",
+      "configs": "Configs",
+      "createdBy": "Created By",
+      "createdOn": "Created On",
+      "lastUpdatedOn": "Last Updated On",
+      "lastUpdatedBy": "Last Updated By",
+      "member": "Member"
+    }
+  }
+}

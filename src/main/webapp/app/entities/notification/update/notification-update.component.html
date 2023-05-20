@@ -1,0 +1,140 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-notification-heading"
+        data-cy="NotificationCreateUpdateHeading"
+        jhiTranslate="portalApp.notification.home.createOrEditLabel"
+      >
+        Create or edit a Notification
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'portalApp.Status.null' | translate }}</option>
+            <option *ngFor="let status of statusValues" [value]="status">{{ 'portalApp.Status.' + status | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.content" for="field_content">Content</label>
+          <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.cost" for="field_cost">Cost</label>
+          <input type="text" class="form-control" name="cost" id="field_cost" data-cy="cost" formControlName="cost" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.msisdn" for="field_msisdn">Msisdn</label>
+          <input type="text" class="form-control" name="msisdn" id="field_msisdn" data-cy="msisdn" formControlName="msisdn" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.notificationType" for="field_notificationType"
+            >Notification Type</label
+          >
+          <select
+            class="form-control"
+            name="notificationType"
+            formControlName="notificationType"
+            id="field_notificationType"
+            data-cy="notificationType"
+          >
+            <option [ngValue]="null">{{ 'portalApp.NotificationType.null' | translate }}</option>
+            <option *ngFor="let notificationType of notificationTypeValues" [value]="notificationType">
+              {{ 'portalApp.NotificationType.' + notificationType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.configs" for="field_configs">Configs</label>
+          <input type="text" class="form-control" name="configs" id="field_configs" data-cy="configs" formControlName="configs" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.createdOn" for="field_createdOn">Created On</label>
+          <input type="text" class="form-control" name="createdOn" id="field_createdOn" data-cy="createdOn" formControlName="createdOn" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.lastUpdatedOn" for="field_lastUpdatedOn">Last Updated On</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastUpdatedOn"
+            id="field_lastUpdatedOn"
+            data-cy="lastUpdatedOn"
+            formControlName="lastUpdatedOn"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.lastUpdatedBy" for="field_lastUpdatedBy">Last Updated By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastUpdatedBy"
+            id="field_lastUpdatedBy"
+            data-cy="lastUpdatedBy"
+            formControlName="lastUpdatedBy"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.notification.association" for="field_association">Association</label>
+          <select
+            class="form-control"
+            id="field_association"
+            data-cy="association"
+            name="association"
+            formControlName="association"
+            [compareWith]="compareAssociation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="associationOption" *ngFor="let associationOption of associationsSharedCollection">
+              {{ associationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

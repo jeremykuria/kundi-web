@@ -1,0 +1,42 @@
+{
+  "portalApp": {
+    "payment": {
+      "home": {
+        "title": "Payments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payment",
+        "createOrEditLabel": "Create or edit a Payment",
+        "notFound": "No Payments found"
+      },
+      "created": "A new Payment is created with identifier {{ param }}",
+      "updated": "A Payment is updated with identifier {{ param }}",
+      "deleted": "A Payment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment"
+      },
+      "id": "ID",
+      "productId": "Product Id",
+      "code": "Code",
+      "subscriberId": "Subscriber Id",
+      "receiptId": "Receipt Id",
+      "orderId": "Order Id",
+      "phone": "Phone",
+      "amount": "Amount",
+      "currency": "Currency",
+      "paybill": "Paybill",
+      "trxId": "Trx Id",
+      "trxEndTime": "Trx End Time",
+      "trxStartTime": "Trx Start Time",
+      "status": "Status",
+      "statusReason": "Status Reason",
+      "configs": "Configs",
+      "createdBy": "Created By",
+      "lastUpdatedOn": "Last Updated On",
+      "lastUpdtedBy": "Last Updted By",
+      "project": "Project"
+    }
+  }
+}

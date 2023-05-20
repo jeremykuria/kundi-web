@@ -1,0 +1,9 @@
+{
+  "portalApp": {
+    "Role": {
+      "null": "",
+      "ADMIN": "ADMIN",
+      "USER": "USER"
+    }
+  }
+}

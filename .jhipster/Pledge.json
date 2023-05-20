@@ -1,0 +1,65 @@
+{
+  "applications": ["portal"],
+  "changelogDate": "20230520180821",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "pledge",
+  "fields": [
+    {
+      "fieldName": "targetAmount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "paidAmount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,FULFILLED"
+    },
+    {
+      "fieldName": "noOfReminders",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "reminderCycle",
+      "fieldType": "ReminderCycle",
+      "fieldValues": "DAILY,WEEKLY,MONTHLY"
+    },
+    {
+      "fieldName": "configs",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Pledge entity.\\n@author The JHipster team.",
+  "jpaMetamodelFiltering": false,
+  "name": "Pledge",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "relationshipName": "project",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
