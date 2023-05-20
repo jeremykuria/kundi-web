@@ -1,0 +1,71 @@
+{
+  "applications": ["portal"],
+  "changelogDate": "20230520180621",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "targetAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "noOfPledgeReminder",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contributedAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paybill",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "configs",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "name": "Project",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "association",
+      "relationshipName": "association",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

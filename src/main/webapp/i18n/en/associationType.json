@@ -1,0 +1,11 @@
+{
+  "portalApp": {
+    "AssociationType": {
+      "null": "",
+      "PRIMARYSCHOOL": "PRIMARYSCHOOL",
+      "HIGHSCHOOL": "HIGHSCHOOL",
+      "UNIVERSITY": "UNIVERSITY",
+      "OTHER": "OTHER"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dailyReport">
+      <h2 data-cy="dailyReportDetailsHeading"><span jhiTranslate="portalApp.dailyReport.detail.title">Daily Report</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dailyReport.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.reportDate">Report Date</span></dt>
+        <dd>
+          <span>{{ dailyReport.reportDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.succesfulTrx">Succesful Trx</span></dt>
+        <dd>
+          <span>{{ dailyReport.succesfulTrx }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.failedTrx">Failed Trx</span></dt>
+        <dd>
+          <span>{{ dailyReport.failedTrx }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.amount">Amount</span></dt>
+        <dd>
+          <span>{{ dailyReport.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.configs">Configs</span></dt>
+        <dd>
+          <span>{{ dailyReport.configs }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.createdOn">Created On</span></dt>
+        <dd>
+          <span>{{ dailyReport.createdOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ dailyReport.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.lastUpdatedOn">Last Updated On</span></dt>
+        <dd>
+          <span>{{ dailyReport.lastUpdatedOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.dailyReport.lastUpdatedBy">Last Updated By</span></dt>
+        <dd>
+          <span>{{ dailyReport.lastUpdatedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/daily-report', dailyReport.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

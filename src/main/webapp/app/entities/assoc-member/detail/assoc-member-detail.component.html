@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="assocMember">
+      <h2 data-cy="assocMemberDetailsHeading"><span jhiTranslate="portalApp.assocMember.detail.title">Assoc Member</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ assocMember.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.name">Name</span></dt>
+        <dd>
+          <span>{{ assocMember.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.email">Email</span></dt>
+        <dd>
+          <span>{{ assocMember.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.phone">Phone</span></dt>
+        <dd>
+          <span>{{ assocMember.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.year">Year</span></dt>
+        <dd>
+          <span>{{ assocMember.year }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.regNo">Reg No</span></dt>
+        <dd>
+          <span>{{ assocMember.regNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.role">Role</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'portalApp.Role.' + assocMember.role }}">{{ assocMember.role }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.configs">Configs</span></dt>
+        <dd>
+          <span>{{ assocMember.configs }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ assocMember.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.createdOn">Created On</span></dt>
+        <dd>
+          <span>{{ assocMember.createdOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.lastUpdatedBy">Last Updated By</span></dt>
+        <dd>
+          <span>{{ assocMember.lastUpdatedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.lastUpdatedOn">Last Updated On</span></dt>
+        <dd>
+          <span>{{ assocMember.lastUpdatedOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.pledge">Pledge</span></dt>
+        <dd>
+          <div *ngIf="assocMember.pledge">
+            <a [routerLink]="['/pledge', assocMember.pledge.id, 'view']">{{ assocMember.pledge.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="portalApp.assocMember.association">Association</span></dt>
+        <dd>
+          <span *ngFor="let association of assocMember.associations; let last = last">
+            <a [routerLink]="['/association', association.id, 'view']">{{ association.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/assoc-member', assocMember.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

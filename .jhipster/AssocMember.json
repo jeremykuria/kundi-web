@@ -1,0 +1,74 @@
+{
+  "applications": ["portal"],
+  "changelogDate": "20230520180521",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "assoc_member",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "regNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "Role",
+      "fieldValues": "ADMIN,USER"
+    },
+    {
+      "fieldName": "configs",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedOn",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AssocMember",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "pledge",
+      "relationshipName": "pledge",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "association",
+      "otherEntityRelationshipName": "member",
+      "ownerSide": true,
+      "relationshipName": "association",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

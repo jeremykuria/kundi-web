@@ -1,0 +1,10 @@
+{
+  "portalApp": {
+    "ReminderCycle": {
+      "null": "",
+      "DAILY": "DAILY",
+      "WEEKLY": "WEEKLY",
+      "MONTHLY": "MONTHLY"
+    }
+  }
+}

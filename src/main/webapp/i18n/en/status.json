@@ -1,0 +1,9 @@
+{
+  "portalApp": {
+    "Status": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "FULFILLED": "FULFILLED"
+    }
+  }
+}

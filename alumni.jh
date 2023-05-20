@@ -1,0 +1,179 @@
+
+application {
+  config {
+    baseName portal,
+    applicationType monolith,
+    packageName ke.natujenge.alumni.portal,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+// entities
+entity Association  {	
+    name String,
+    brief String,
+    description String,    
+    phoneNumber String,
+    contentStatus String,
+    paybill String,
+    associationType AssociationType
+    configs String
+    createdBy String,
+    createdOn String,
+    lastUpdatedOn String,
+    lastUpdatedBy String  
+    
+}
+enum AssociationType {
+PRIMARYSCHOOL,HIGHSCHOOL,
+UNIVERSITY,OTHER
+}
+
+entity AssocMember {
+    name String,
+    email String,
+    phone String,
+    year String,
+    regNo String,
+    role Role,
+    configs String
+    createdBy String,
+    createdOn String,
+    lastUpdatedBy String,
+    lastUpdatedOn String
+    
+  }
+  // enum 
+  enum Role {
+	ADMIN, USER
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Project{	
+    
+    name String,
+    targetAmount String,
+    startDate String,
+    endDate String,
+    noOfPledgeReminder String,
+    contributedAmount String,    
+    paybill String,
+    configs String,
+    createdBy String,
+    createdOn String,
+    lastUpdatedOn String,
+    lastUpdatedBy String
+}
+
+entity Payment { 
+    productId String,
+    code String,
+    subscriberId String,    
+    receiptId String,
+    orderId String
+    phone String,
+    amount String,
+    currency String,
+    paybill String,
+    trxId String
+    trxEndTime String,
+    trxStartTime String,
+    status String,
+    statusReason String,
+    configs String,
+    createdBy String
+    createdBy String,
+    lastUpdatedOn String,
+    lastUpdtedBy String
+    
+}
+
+/**
+ * Pledge entity.
+ * @author The JHipster team.
+ */
+entity Pledge {	  
+    targetAmount Float,
+    paidAmount Float,
+    status Status,    
+    noOfReminders Integer,
+    reminderCycle ReminderCycle,
+    configs String,
+    createdOn String,
+    createdBy String,
+    lastUpdatedOn String,
+    lastUpdatedBy String,
+    
+}
+
+// status enum
+enum Status {
+ACTIVE, FULFILLED
+}
+ enum ReminderCycle {
+ DAILY, WEEKLY, MONTHLY
+ }
+
+/**
+ * The Report entity.
+ */
+entity DailyReport {		
+    reportDate String,
+    succesfulTrx String,
+    failedTrx String,
+    amount Float,
+    configs String,
+    createdOn String,
+    createdBy String,
+    lastUpdatedOn String,
+    lastUpdatedBy String,
+    
+}
+
+entity Notification {	
+    status Status,
+    content String,
+    cost String,
+    email String,
+    msisdn String,
+    notificationType NotificationType
+    configs String
+    createdOn String,
+    createdBy String,
+    lastUpdatedOn String,
+    lastUpdatedBy String  
+    
+   
+   
+  }
+  
+  enum NotificationType {
+  EMAIL, SMS
+  }
+
+   enum NotificationStatus {
+    SEND,DELIVRD,
+    FAILED
+    }
+
+
+relationship ManyToOne {   
+  Project {association} to Association,
+  Payment{project} to Project,
+  AssocMember {pledge} to Pledge, 
+  Pledge {project} to Project
+  Notification {association} to Association
+}
+relationship ManyToMany {
+ AssocMember {association} to Association {member}
+
+}
+
+
+// set pagination options
+paginate Payment, AssocMember, DailyReport, Pledge, Project with pagination
+    
