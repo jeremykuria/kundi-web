@@ -1,0 +1,111 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-daily-report-heading"
+        data-cy="DailyReportCreateUpdateHeading"
+        jhiTranslate="portalApp.dailyReport.home.createOrEditLabel"
+      >
+        Create or edit a Daily Report
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.reportDate" for="field_reportDate">Report Date</label>
+          <input
+            type="text"
+            class="form-control"
+            name="reportDate"
+            id="field_reportDate"
+            data-cy="reportDate"
+            formControlName="reportDate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.succesfulTrx" for="field_succesfulTrx">Succesful Trx</label>
+          <input
+            type="text"
+            class="form-control"
+            name="succesfulTrx"
+            id="field_succesfulTrx"
+            data-cy="succesfulTrx"
+            formControlName="succesfulTrx"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.failedTrx" for="field_failedTrx">Failed Trx</label>
+          <input type="text" class="form-control" name="failedTrx" id="field_failedTrx" data-cy="failedTrx" formControlName="failedTrx" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.amount" for="field_amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.configs" for="field_configs">Configs</label>
+          <input type="text" class="form-control" name="configs" id="field_configs" data-cy="configs" formControlName="configs" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.createdOn" for="field_createdOn">Created On</label>
+          <input type="text" class="form-control" name="createdOn" id="field_createdOn" data-cy="createdOn" formControlName="createdOn" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.lastUpdatedOn" for="field_lastUpdatedOn">Last Updated On</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastUpdatedOn"
+            id="field_lastUpdatedOn"
+            data-cy="lastUpdatedOn"
+            formControlName="lastUpdatedOn"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.dailyReport.lastUpdatedBy" for="field_lastUpdatedBy">Last Updated By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastUpdatedBy"
+            id="field_lastUpdatedBy"
+            data-cy="lastUpdatedBy"
+            formControlName="lastUpdatedBy"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

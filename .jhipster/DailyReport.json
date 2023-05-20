@@ -1,0 +1,53 @@
+{
+  "applications": ["portal"],
+  "changelogDate": "20230520180921",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "daily_report",
+  "fields": [
+    {
+      "fieldName": "reportDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "succesfulTrx",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "failedTrx",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "configs",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Report entity.",
+  "jpaMetamodelFiltering": false,
+  "name": "DailyReport",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

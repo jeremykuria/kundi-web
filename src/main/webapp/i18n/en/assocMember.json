@@ -1,0 +1,36 @@
+{
+  "portalApp": {
+    "assocMember": {
+      "home": {
+        "title": "Assoc Members",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Assoc Member",
+        "createOrEditLabel": "Create or edit a Assoc Member",
+        "notFound": "No Assoc Members found"
+      },
+      "created": "A new Assoc Member is created with identifier {{ param }}",
+      "updated": "A Assoc Member is updated with identifier {{ param }}",
+      "deleted": "A Assoc Member is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Assoc Member {{ id }}?"
+      },
+      "detail": {
+        "title": "Assoc Member"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "year": "Year",
+      "regNo": "Reg No",
+      "role": "Role",
+      "configs": "Configs",
+      "createdBy": "Created By",
+      "createdOn": "Created On",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedOn": "Last Updated On",
+      "pledge": "Pledge",
+      "association": "Association"
+    }
+  }
+}

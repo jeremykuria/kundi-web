@@ -1,0 +1,73 @@
+{
+  "applications": ["portal"],
+  "changelogDate": "20230520180421",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "association",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "brief",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contentStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paybill",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "associationType",
+      "fieldType": "AssociationType",
+      "fieldValues": "PRIMARYSCHOOL,HIGHSCHOOL,UNIVERSITY,OTHER"
+    },
+    {
+      "fieldName": "configs",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedOn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Association",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "assocMember",
+      "otherEntityRelationshipName": "association",
+      "ownerSide": false,
+      "relationshipName": "member",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

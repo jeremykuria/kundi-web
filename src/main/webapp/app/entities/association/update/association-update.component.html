@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-association-heading" data-cy="AssociationCreateUpdateHeading" jhiTranslate="portalApp.association.home.createOrEditLabel">
+        Create or edit a Association
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.brief" for="field_brief">Brief</label>
+          <input type="text" class="form-control" name="brief" id="field_brief" data-cy="brief" formControlName="brief" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.contentStatus" for="field_contentStatus">Content Status</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contentStatus"
+            id="field_contentStatus"
+            data-cy="contentStatus"
+            formControlName="contentStatus"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.paybill" for="field_paybill">Paybill</label>
+          <input type="text" class="form-control" name="paybill" id="field_paybill" data-cy="paybill" formControlName="paybill" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.associationType" for="field_associationType"
+            >Association Type</label
+          >
+          <select
+            class="form-control"
+            name="associationType"
+            formControlName="associationType"
+            id="field_associationType"
+            data-cy="associationType"
+          >
+            <option [ngValue]="null">{{ 'portalApp.AssociationType.null' | translate }}</option>
+            <option *ngFor="let associationType of associationTypeValues" [value]="associationType">
+              {{ 'portalApp.AssociationType.' + associationType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.configs" for="field_configs">Configs</label>
+          <input type="text" class="form-control" name="configs" id="field_configs" data-cy="configs" formControlName="configs" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.createdOn" for="field_createdOn">Created On</label>
+          <input type="text" class="form-control" name="createdOn" id="field_createdOn" data-cy="createdOn" formControlName="createdOn" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.lastUpdatedOn" for="field_lastUpdatedOn">Last Updated On</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastUpdatedOn"
+            id="field_lastUpdatedOn"
+            data-cy="lastUpdatedOn"
+            formControlName="lastUpdatedOn"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="portalApp.association.lastUpdatedBy" for="field_lastUpdatedBy">Last Updated By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastUpdatedBy"
+            id="field_lastUpdatedBy"
+            data-cy="lastUpdatedBy"
+            formControlName="lastUpdatedBy"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

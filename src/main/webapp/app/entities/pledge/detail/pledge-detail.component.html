@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pledge">
+      <h2 data-cy="pledgeDetailsHeading"><span jhiTranslate="portalApp.pledge.detail.title">Pledge</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pledge.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.targetAmount">Target Amount</span></dt>
+        <dd>
+          <span>{{ pledge.targetAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.paidAmount">Paid Amount</span></dt>
+        <dd>
+          <span>{{ pledge.paidAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'portalApp.Status.' + pledge.status }}">{{ pledge.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.noOfReminders">No Of Reminders</span></dt>
+        <dd>
+          <span>{{ pledge.noOfReminders }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.reminderCycle">Reminder Cycle</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'portalApp.ReminderCycle.' + pledge.reminderCycle }}">{{ pledge.reminderCycle }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.configs">Configs</span></dt>
+        <dd>
+          <span>{{ pledge.configs }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.createdOn">Created On</span></dt>
+        <dd>
+          <span>{{ pledge.createdOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ pledge.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.lastUpdatedOn">Last Updated On</span></dt>
+        <dd>
+          <span>{{ pledge.lastUpdatedOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.lastUpdatedBy">Last Updated By</span></dt>
+        <dd>
+          <span>{{ pledge.lastUpdatedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.pledge.project">Project</span></dt>
+        <dd>
+          <div *ngIf="pledge.project">
+            <a [routerLink]="['/project', pledge.project.id, 'view']">{{ pledge.project.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pledge', pledge.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

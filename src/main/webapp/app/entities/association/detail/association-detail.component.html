@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="association">
+      <h2 data-cy="associationDetailsHeading"><span jhiTranslate="portalApp.association.detail.title">Association</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ association.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.name">Name</span></dt>
+        <dd>
+          <span>{{ association.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.brief">Brief</span></dt>
+        <dd>
+          <span>{{ association.brief }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.description">Description</span></dt>
+        <dd>
+          <span>{{ association.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ association.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.contentStatus">Content Status</span></dt>
+        <dd>
+          <span>{{ association.contentStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.paybill">Paybill</span></dt>
+        <dd>
+          <span>{{ association.paybill }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.associationType">Association Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'portalApp.AssociationType.' + association.associationType }}">{{ association.associationType }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.configs">Configs</span></dt>
+        <dd>
+          <span>{{ association.configs }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ association.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.createdOn">Created On</span></dt>
+        <dd>
+          <span>{{ association.createdOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.lastUpdatedOn">Last Updated On</span></dt>
+        <dd>
+          <span>{{ association.lastUpdatedOn }}</span>
+        </dd>
+        <dt><span jhiTranslate="portalApp.association.lastUpdatedBy">Last Updated By</span></dt>
+        <dd>
+          <span>{{ association.lastUpdatedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/association', association.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

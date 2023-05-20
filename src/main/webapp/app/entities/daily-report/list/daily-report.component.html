@@ -1,0 +1,162 @@
+<div>
+  <h2 id="page-heading" data-cy="DailyReportHeading">
+    <span jhiTranslate="portalApp.dailyReport.home.title">Daily Reports</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="portalApp.dailyReport.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-daily-report"
+        [routerLink]="['/daily-report/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="portalApp.dailyReport.home.createLabel"> Create a new Daily Report </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="dailyReports?.length === 0">
+    <span jhiTranslate="portalApp.dailyReport.home.notFound">No Daily Reports found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="dailyReports && dailyReports.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reportDate">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.reportDate">Report Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="succesfulTrx">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.succesfulTrx">Succesful Trx</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="failedTrx">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.failedTrx">Failed Trx</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="amount">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.amount">Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="configs">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.configs">Configs</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdOn">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.createdOn">Created On</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastUpdatedOn">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.lastUpdatedOn">Last Updated On</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastUpdatedBy">
+            <div class="d-flex">
+              <span jhiTranslate="portalApp.dailyReport.lastUpdatedBy">Last Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dailyReport of dailyReports; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/daily-report', dailyReport.id, 'view']">{{ dailyReport.id }}</a>
+          </td>
+          <td>{{ dailyReport.reportDate }}</td>
+          <td>{{ dailyReport.succesfulTrx }}</td>
+          <td>{{ dailyReport.failedTrx }}</td>
+          <td>{{ dailyReport.amount }}</td>
+          <td>{{ dailyReport.configs }}</td>
+          <td>{{ dailyReport.createdOn }}</td>
+          <td>{{ dailyReport.createdBy }}</td>
+          <td>{{ dailyReport.lastUpdatedOn }}</td>
+          <td>{{ dailyReport.lastUpdatedBy }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/daily-report', dailyReport.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/daily-report', dailyReport.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(dailyReport)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="dailyReports && dailyReports.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
